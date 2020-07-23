@@ -11,16 +11,14 @@ import yaml
 import requests
 import pathlib
 
-def update_version():
-    for path in pathlib.Path("./temp").iterdir():
-        if path.is_file():
-            current_file = open(path, "r")
+def download_latest_version():
+    current_file = open('./Game_files/VERSION.txt')
     ver_URL = "https://raw.githubusercontent.com/jakes516/tempgame_patcher/master/versions.yaml"
     session = requests.Session()
     response = session.get(ver_URL)
     versions = yaml.load(response.text, Loader = yaml.FullLoader)
-
-    #print(versions)
+    #must have version.txt instead of using path
+    print(versions)
 
     latest_version = versions['version'][0]
     latest_version_id = versions['version'][0]['v1.0.0']['file_id']
@@ -33,7 +31,7 @@ def update_version():
     #print(latest_version_number)
     #print(current_file.name)
     file_id = latest_version_id
-    if latest_version_number in current_file.name:
+    if latest_version_number == current_file.read():
         print(f"Your version ({latest_version_number}) is up to date")
         return
     else:
@@ -42,5 +40,9 @@ def update_version():
         gDrive = DriveUtil()
         destination = './temporary.zip'
         gDrive.download_file_from_google_drive(file_id, destination)
-        unzip_file("./temporary.zip", "./temp", deleteZip=False)
+        unzip_file("./temporary.zip", "./Game_files", deleteZip=False)
+    #run something
+    #when checking version use a version.txt in the folder don't have it in filename
+    #include LICENSE.txt
 
+download_latest_version()
