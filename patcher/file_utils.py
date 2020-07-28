@@ -1,6 +1,7 @@
 import zipfile
 import os
 
+#unzips file and removes older files in directory
 def unzip_file(file, destination, deleteZip = True):
     if os.path.exists(destination):
         filelist = [f for f in os.listdir(destination)]

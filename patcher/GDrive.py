@@ -1,16 +1,55 @@
 import json
 import os
 import requests
+from rauth import OAuth2Service
+
+#bearer token generator for google drive api
+class ExampleOAuth2Client:
+    def __init__(self, client_id, client_secret):
+        self.access_token = None
+
+        self.service = OAuth2Service(
+            name="Patcher",
+            client_id=client_id,
+            client_secret=client_secret,
+            access_token_url="https://oauth2.googleapis.com/token",
+            authorize_url="https://accounts.google.com/o/oauth2/v2/auth",
+            base_url="https://www.googleapis.com",
+        )
+
+        self.get_access_token()
+
+    def get_access_token(self):
+        data = {
+            #refresh token generated on Oauth2.0playground goes below
+            'refresh_token': 'refresh_token_generated_using_above_here',
+            'grant_type': 'refresh_token',
+            'redirect_uri': 'https://developers.google.com/oauthplayground'}
+
+        session = self.service.get_auth_session(data=data, decoder=json.loads)
+
+        self.access_token = session.access_token
+        return session.access_token
 
 
+#enter the client_id, client_secret credentials created on console.developers.google.com here
+Auth2Client = ExampleOAuth2Client('client_id',
+                                      'client_secret')
+
+
+
+#drive utility for downloading, uploading, sharing
 class DriveUtil:
     '''
     This is a google drive util to upload files to google drive, download them, and open the file for public access
 
     '''
     def __init__(self):
-        self.access_token = 'ya29.a0AfH6SMBGr2RdIJeP-0ZORbYt4Aezi0pMukqsF_jdiY9XIicjccTvlQAbOh4EZpESE4ypQSDs6whGgBz9TmFCQFeCDi5_9wScMBOxCx2BOXcWeHACQelx0TQ6GxxT_aPU9avxiRt9lUVRh0vDdNL0zALt0n3xV1YKXW0'
+        self.access_token = str(Auth2Client.get_access_token())
     #alert deleting everything in temp before download (google how to delete stuff from temp (maybe shutil)
+
+
+
     def download_file_from_google_drive(self, file_id, destination):
         URL = "https://docs.google.com/uc?export=download"
 
@@ -42,11 +81,12 @@ class DriveUtil:
                     f.write(chunk)
 
     def upload_to_drive(self):
-        filename = r'C:\Users\Jake\Pictures\walter c dornez.zip'
+        #assign path to file being uploaded as filename
+        filename = r'C:\Users\Jake\Pictures\v1.0.0.jpg.zip'
         filesize = os.path.getsize(filename)
         headers = {"Authorization": "Bearer " + self.access_token, "Content-Type": "application/json"}
         params = {
-            "name": "test.zip",
+            "name": "v1.0.0.jpg.zip",
             "mimeType": "application/zip"
         }
         r = requests.post(
@@ -82,14 +122,8 @@ class DriveUtil:
 
     #TODO: Need to delete files
     def delete_file_from_drive(self):
-        pass
 
-    #TODO: Need to generate bearer token
-    def generate_access_token_through_oauth2(self):
-        # Allegedly. Untested.
-        # https://stackoverflow.com/questions/36719540/how-can-i-get-an-oauth2-access-token-using-python
         pass
-
 
 
 

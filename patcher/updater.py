@@ -1,8 +1,3 @@
-#read a file to check the current version
-#go to github for versions.yaml, check latest version there and compare with current
-#if they are not =, update with current one in versions.yaml, use gdrive.download_file_from_drive with file_id from versions.yaml
-#download all to temp, replace version in current directory
-#refactor code
 
 
 from file_utils import unzip_file
@@ -12,6 +7,7 @@ import requests
 import os
 import pathlib
 
+#checks current file version and downloads latest if not up to date.
 def download_latest_version():
     #print(os.getcwd())
     ver_URL = "https://raw.githubusercontent.com/jakes516/tempgame_patcher/master/versions.yaml"
