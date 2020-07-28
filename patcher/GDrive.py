@@ -9,8 +9,8 @@ class DriveUtil:
 
     '''
     def __init__(self):
-        self.access_token = 'ya29.a0AfH6SMCSfz5mZlMRH0wcOm1VYRCd5pC8drCdULLPuWRmq1D3Ukec7z5bDdrFzPbnXI6u7WGRwdLgTZvS4XzzQaonwjTEBCQVUmgYrGh6My8voyIV-qpeCZKbIuSXgzLCFobexe6eF3d0gtZv--RhTQrtYbHuP7hgY88'
-
+        self.access_token = 'ya29.a0AfH6SMBGr2RdIJeP-0ZORbYt4Aezi0pMukqsF_jdiY9XIicjccTvlQAbOh4EZpESE4ypQSDs6whGgBz9TmFCQFeCDi5_9wScMBOxCx2BOXcWeHACQelx0TQ6GxxT_aPU9avxiRt9lUVRh0vDdNL0zALt0n3xV1YKXW0'
+    #alert deleting everything in temp before download (google how to delete stuff from temp (maybe shutil)
     def download_file_from_google_drive(self, file_id, destination):
         URL = "https://docs.google.com/uc?export=download"
 
@@ -24,6 +24,7 @@ class DriveUtil:
             response = session.get(URL, params=params, stream=True)
 
         self.save_response_content(response, destination)
+
 
     def get_confirm_token(self, response):
         for key, value in response.cookies.items():
@@ -88,6 +89,7 @@ class DriveUtil:
         # Allegedly. Untested.
         # https://stackoverflow.com/questions/36719540/how-can-i-get-an-oauth2-access-token-using-python
         pass
+
 
 
 
