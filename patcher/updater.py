@@ -15,7 +15,7 @@ def download_latest_version():
     response = session.get(ver_URL)
     versions = yaml.load(response.text, Loader = yaml.FullLoader)
     #must have version.txt instead of using path
-    #print(versions)
+    print(versions)
 
     latest_version = versions['version'][0]
     latest_version_id = versions['version'][0]['v1.0.0']['file_id']
@@ -40,6 +40,7 @@ def download_latest_version():
             break
         if latest_version_number == current_file.read():
             print(f"Your version ({latest_version_number}) is up to date")
+            current_file.close()
             break
         else:
             print(f"Your version is not up to date. {latest_version_number} update is downloading.")

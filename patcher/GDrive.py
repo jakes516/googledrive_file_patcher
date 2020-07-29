@@ -20,9 +20,13 @@ class ExampleOAuth2Client:
         self.get_access_token()
 
     def get_access_token(self):
+        #loading json file with client_id, client_secret, refresh_token
+        cred = open('./Credentials/client_credentials.json')
+        credentials = json.load(cred)
+        cred.close()
         data = {
             #refresh token generated on Oauth2.0playground goes below
-            'refresh_token': 'refresh_token_generated_using_above_here',
+            'refresh_token': str(credentials['refresh_token']),
             'grant_type': 'refresh_token',
             'redirect_uri': 'https://developers.google.com/oauthplayground'}
 
@@ -32,9 +36,14 @@ class ExampleOAuth2Client:
         return session.access_token
 
 
+
+cred = open('./Credentials/client_credentials.json')
+credentials = json.load(cred)
+cred.close()
+
 #enter the client_id, client_secret credentials created on console.developers.google.com here
-Auth2Client = ExampleOAuth2Client('client_id',
-                                      'client_secret')
+Auth2Client = ExampleOAuth2Client(str(credentials['client_id']),
+                                      str(credentials['client_secret']))
 
 
 
@@ -121,10 +130,32 @@ class DriveUtil:
 
 
     #TODO: Need to delete files
-    def delete_file_from_drive(self):
+    #deletes all old versions listed in yaml from drive
+    def delete_files_from_drive(self):
+        ver_URL = "https://raw.githubusercontent.com/jakes516/tempgame_patcher/master/versions.yaml"
+        session = requests.Session()
+        response = session.get(ver_URL)
+        versions = yaml.load(response.text, Loader=yaml.FullLoader)
+        # print(versions)
+        version_history = versions['version_history']
+        file_ids_comp = []
+        # print(version_history)
 
-        pass
+        for numbers in range(len(version_history)):
+            file_ids_comp.append(list(version_history[numbers].values()))
+        #print(file_ids_comp)
 
+        file_ids = []
+
+        for ids in range(len([file_ids_comp]) + 1):
+            file_ids.append(file_ids_comp[ids][0]['file_id'])
+        #print(file_ids)
+
+        headers = {"Authorization": "Bearer " + self.access_token, "Content-Type": "application/json"}
+
+        for id_value in file_ids:
+            r = requests.delete(f"https://www.googleapis.com/drive/v3/files/{id_value}",
+                                headers=headers)
 
 
 
