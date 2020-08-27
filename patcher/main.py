@@ -34,10 +34,8 @@ while True:
 #TODO: Docker
 
 
+#use credentials through credentials.json
 
-#Use credentials through credentials txt
-#make a json file in config for refresh token and credentials
-#download unityhub and unity
-
-#detail how to get refresh token/create credentials
-
+#TODO #detail how to get refresh token/create credentials in readme.md, read up on how to write markdown(.md)
+#go to https://developers.google.com/adwords/api/docs/guides/authentication
+#and https://console.developers.google.com/apis and click credentials

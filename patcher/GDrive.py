@@ -91,6 +91,8 @@ class DriveUtil:
 
     def upload_to_drive(self):
         #assign path to file being uploaded as filename
+
+        ## ./patcher/test_file.zip change path to relative path in directory
         filename = r'C:\Users\Jake\Pictures\v1.0.0.jpg.zip'
         filesize = os.path.getsize(filename)
         headers = {"Authorization": "Bearer " + self.access_token, "Content-Type": "application/json"}
@@ -129,7 +131,10 @@ class DriveUtil:
         print(response.text.encode('utf8'))
 
 
-    #TODO: Need to delete files
+#TODO: immediately Update yaml file on github following an upload by pulling yaml and comparing current version to version.txt of upload
+
+#TODO: re-organize upload/download directories and create function to zip game file and prompt version in VERSION.txt prior to upload,
+
     #deletes all old versions listed in yaml from drive
     def delete_files_from_drive(self):
         ver_URL = "https://raw.githubusercontent.com/jakes516/tempgame_patcher/master/versions.yaml"
