@@ -131,9 +131,9 @@ class DriveUtil:
         print(response.text.encode('utf8'))
 
 
-#TODO: immediately Update yaml file on github following an upload by pulling yaml and comparing current version to version.txt of upload
+# immediately Update yaml file on github following an upload by pulling yaml and comparing current version to version.txt of upload
 
-#TODO: re-organize upload/download directories and create function to zip game file and prompt version in VERSION.txt prior to upload,
+# re-organize upload/download directories and create function to zip game file and prompt version in VERSION.txt prior to upload,
 
     #deletes all old versions listed in yaml from drive
     def delete_files_from_drive(self):
@@ -162,10 +162,11 @@ class DriveUtil:
             r = requests.delete(f"https://www.googleapis.com/drive/v3/files/{id_value}",
                                 headers=headers)
 
-#TODO develop function to automate updating local yamal, then push to github
+# develop function to automate updating local yamal, then push to github
     #must be run IMMEDIATELY following the upload function
     def update_yaml(self):
         id = self.remote_file_info["id"]
+        # why was naming it twice necessary for obtaining the file_id, using only id only gave the dictionary
         file_id_numbers = id
         file_name = "./version_history/versions.yaml"
         try:
@@ -190,4 +191,6 @@ class DriveUtil:
                     with open(file_name, 'w+') as local_yaml:
                         yaml.safe_dump(version_info, local_yaml)
                     #print(id)
+#TODO make update yamal function delete existing version_test.txt
+
 

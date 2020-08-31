@@ -33,9 +33,13 @@ while True:
 #TODO: Jake Topics
 #TODO: Docker
 
+#TODO: now get all of the created functions + updating yamal + compressing files
+#TODO: together to run in an appropriate main file (also have update yamal function delete intermediate version_test.txt file
+#TODO: which was created by zip_file_with_VERSION
+#TODO: After completing structure, update readme.md and add concept diagram of information flow
 
 #use credentials through credentials.json
 
-#TODO #detail how to get refresh token/create credentials in readme.md, read up on how to write markdown(.md)
+#T #detail how to get refresh token/create credentials in readme.md, read up on how to write markdown(.md)
 #go to https://developers.google.com/adwords/api/docs/guides/authentication
 #and https://console.developers.google.com/apis and click credentials

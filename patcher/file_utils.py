@@ -16,7 +16,7 @@ def unzip_file(file, destination, deleteZip = True):
         os.remove(file)
 
 
-#TODO automate zipping and prompting version number
+# automate zipping and prompting version number
 
 #An intermediate VERSION.txt file will be created during this process outside of the zip file within the patcher directory.
 # DO NOT DELETE THIS, it is necessary for updating the yaml, the update yaml function will delete it after it finishes.
