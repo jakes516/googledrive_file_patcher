@@ -2,7 +2,7 @@ import json
 import os
 import requests
 from rauth import OAuth2Service
-
+import yaml
 #bearer token generator for google drive api
 class ExampleOAuth2Client:
     def __init__(self, client_id, client_secret):
@@ -162,5 +162,32 @@ class DriveUtil:
             r = requests.delete(f"https://www.googleapis.com/drive/v3/files/{id_value}",
                                 headers=headers)
 
-
+#TODO develop function to automate updating local yamal, then push to github
+    #must be run IMMEDIATELY following the upload function
+    def update_yaml(self):
+        id = self.remote_file_info["id"]
+        file_id_numbers = id
+        file_name = "./version_history/versions.yaml"
+        try:
+            version_txt_file = "./VERSION_test.txt"
+        except FileNotFoundError:
+            print('You have not zipped and uploaded a new file and version_file since your last yaml update.')
+        with open(file_name) as local_yaml:
+            version_info = yaml.safe_load(local_yaml)
+            print(version_info)
+            latest_version = version_info['version'][0]
+            for version_number, id in latest_version.items():
+                latest_version_number = version_number
+            print(latest_version_number)
+            with open(version_txt_file) as version_txt_file_open:
+                new_version = version_txt_file_open.read()
+                if latest_version_number in version_txt_file_open:
+                    print("It appears your yaml already contains this latest version info.")
+                else:
+                    outdated_version = version_info['version'][0]
+                    version_info['version_history'].insert(0,outdated_version)
+                    version_info['version'][0] = {f'{new_version}': {'file_id': f'{file_id_numbers}'}}
+                    with open(file_name, 'w+') as local_yaml:
+                        yaml.safe_dump(version_info, local_yaml)
+                    #print(id)
 

@@ -54,12 +54,3 @@ def download_latest_version():
     #run something
     #when checking version use a version.txt in the folder don't have it in filename
     #include LICENSE.txt
-
-#TODO automate updating yamal
-def update_yaml():
-    file_name = "./patcher/version_history/versions.yaml"
-    with open(file_name) as local_yaml:
-        version_info = yaml.load(local_yaml)
-        print(version_info)
-#update_yaml()
-
