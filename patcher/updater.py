@@ -1,5 +1,4 @@
 
-#TODO fix updater determining latest version
 from file_utils import unzip_file
 from GDrive import DriveUtil
 import yaml
@@ -53,4 +52,3 @@ def download_latest_version():
     #run something
     #when checking version use a version.txt in the folder don't have it in filename
     #include LICENSE.txt
-download_latest_version()
