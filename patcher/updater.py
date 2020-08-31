@@ -1,5 +1,5 @@
 
-
+#TODO fix updater determining latest version
 from file_utils import unzip_file
 from GDrive import DriveUtil
 import yaml
@@ -10,7 +10,7 @@ import pathlib
 #checks current file version and downloads latest if not up to date.
 def download_latest_version():
     #print(os.getcwd())
-    ver_URL = "https://raw.githubusercontent.com/jakes516/tempgame_patcher/master/versions.yaml"
+    ver_URL = "https://raw.githubusercontent.com/jakes516/googledrive_game_patcher/master/patcher/version_history/versions.yaml"
     session = requests.Session()
     response = session.get(ver_URL)
     versions = yaml.load(response.text, Loader = yaml.FullLoader)
@@ -18,16 +18,15 @@ def download_latest_version():
     print(versions)
 
     latest_version = versions['version'][0]
-    latest_version_id = versions['version'][0]['v1.0.0']['file_id']
-
+    #latest_version_id = versions['version'][0]['v1.0.0']['file_id']
     #print(latest_version_id)
 
     for version_number, id in latest_version.items():
         latest_version_number = version_number
-
+        file_id = id['file_id']
     #print(latest_version_number)
     #print(current_file.name)
-    file_id = latest_version_id
+    #print(file_id)
     while True:
         try:
             current_file = open('./Game_Files/VERSION.txt')
@@ -54,3 +53,4 @@ def download_latest_version():
     #run something
     #when checking version use a version.txt in the folder don't have it in filename
     #include LICENSE.txt
+download_latest_version()
