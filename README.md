@@ -9,7 +9,7 @@ Main.py is being currently used for testing and is still under development for a
 upon selecting a file to upload.
 
 
-##Structure
+## Structure
 Google Drive + Drive API v3
 OAuth2 Playground
 Github Repository
@@ -41,5 +41,5 @@ Be sure to add the credentials.json file to your .gitignore as this info grants 
 In order for the downloader to run appropriately you need a VERSION.txt file with the current file version number listed in it present in your Game_Files directory.
 If you do not have a VERSION.txt it will automatically clear your Game_files directory and download the latest game files from Google Drive.
 
-##Future Updates
+## Future Updates
 Will update this read_me throughout development.
