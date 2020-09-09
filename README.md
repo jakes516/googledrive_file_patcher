@@ -3,6 +3,7 @@
 ## Description
 This repository is an in-development patcher for uploading, downloading, and unzipping google drive files, opening the drive files to public access, 
 and keeping file versions updated. The code uses Python 3.7 (Pycharm IDE) with re, requests, os, yaml, pathlib, json, zipfile, and OAuth2Service modules installed.
+
 As of now individual functions in "GDrive", "updater", and "file_utils" should run fine as long as the local file paths 
 are edited for whatever you intend to upload/download/zip. 
 Main.py is being currently used for testing and is still under development for an upload loop which incorporates yaml updates and zipfile creation automatically
@@ -10,10 +11,10 @@ upon selecting a file to upload.
 
 
 ## Structure
-Google Drive + Drive API v3
-OAuth2 Playground
-Github Repository
-Local Storage with Game File + versions.yaml File
+- Google Drive + Drive API v3
+- OAuth2 Playground
+- Github Repository
+- Local Storage with Game File + versions.yaml File
 
 <p align="center">
     <img width="811" height="480" src="Documentation/Patcher_Structure.jpg">
