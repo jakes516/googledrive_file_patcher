@@ -23,6 +23,7 @@ def unzip_file(file, destination, deleteZip = True):
 def zip_file_with_VERSION(zip_name, file):
     while True:
 
+            #TODO: use version_input for param name in upload_to_drive function as well!
             version_input = str(input("\nPlease type the version number in the form v#.#.#\n"))
             regex = re.compile(r"^[vV](\d.){2}\d$")
             if regex.match(version_input):
@@ -40,5 +41,10 @@ def zip_file_with_VERSION(zip_name, file):
         myzip.write(file, arcname='./wasp.jpg')
         myzip.write('./VERSION_test.txt')
         #os.remove('./VERSION_test.txt')
-        #enter path to game projects directory
-#zip_file_with_VERSION('test_file.zip', "C:/Users/Jake/Pictures/wasp.jpg")
+        #enter path in File_of_interest directory
+#zip_file_with_VERSION('test_file.zip', "./File_of_interest/wasp.jpg")
+
+#TODO: change wasp test file path to relative path by creating new file_of_interest/game_projects directory
+#TODO: and rewrite the path to open whatever is in this directory
+
+

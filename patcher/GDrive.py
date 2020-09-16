@@ -91,13 +91,14 @@ class DriveUtil:
 
     def upload_to_drive(self):
         #assign path to file being uploaded as filename
-
+        #TODO: CHANGE UPLOAD PATH TO RELATIVE PATH, AND change param name to match VERSION input in zip_file
+        #TODO: function
         ## ./patcher/test_file.zip change path to relative path in directory
-        filename = r'C:\Users\Jake\Pictures\v1.0.0.jpg.zip'
+        filename = r'./test_file.zip'
         filesize = os.path.getsize(filename)
         headers = {"Authorization": "Bearer " + self.access_token, "Content-Type": "application/json"}
         params = {
-            "name": "v1.0.0.jpg.zip",
+            "name": "v1.1.1.jpg.zip",
             "mimeType": "application/zip"
         }
         r = requests.post(
@@ -190,7 +191,9 @@ class DriveUtil:
                     version_info['version'][0] = {f'{new_version}': {'file_id': f'{file_id_numbers}'}}
                     with open(file_name, 'w+') as local_yaml:
                         yaml.safe_dump(version_info, local_yaml)
+                    #TODO: add version_test remove to while loop in main
+                    #os.remove('./VERSION_test.txt')
                     #print(id)
-#TODO make update yamal function delete existing version_test.txt
+#TODO make update yamal function automatically push to github
 
 
