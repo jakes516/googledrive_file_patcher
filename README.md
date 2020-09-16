@@ -5,8 +5,7 @@ This repository is an in-development patcher for uploading, downloading, and unz
 and keeping file versions updated. The code uses Python 3.7 (Pycharm IDE) with re, requests, os, yaml, pathlib, json, zipfile, and OAuth2Service modules installed.
 
 As of now individual functions in "GDrive", "updater", and "file_utils" should run fine as long as the local file paths 
-are edited for whatever you intend to upload/download/zip, you create Credentials detailed below and
-a Credentials directory with a client_credentials.json within the patcher directory,
+are edited for whatever you intend to upload/download/zip, you create Credentials detailed below in Uploader Setup,
 and the github yaml url is changed to yours in updater and GDrive's delete_files_from_drive.
 
 Main.py is being currently used for testing and is still under development for an upload loop which incorporates yaml updates and zipfile creation automatically
