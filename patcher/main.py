@@ -30,7 +30,9 @@ from file_utils import zip_file_with_VERSION
 #         restart = input('\nFinished; run again? Enter yes or no.\n')
 #         if restart.lower() != 'yes':
 #             break
-
+#TODO: Now finish fixing paths to relative paths, have update yaml function auto push to github,
+#TODO: have zip_file_with_VERSION use version input for google drive naming in upload to drive params
+#TODO:
 zip_file_with_VERSION('test_file.zip', "./File_of_interest/wasp.jpg")
 
 gDrive = DriveUtil()
@@ -54,9 +56,6 @@ gDrive.update_yaml()
 #TODO: Jake Topics
 #TODO: Docker
 
-#TODO: now get all of the created functions + updating yamal + compressing files
-#TODO: together to run in an appropriate main file (also have update yamal function delete intermediate version_test.txt file
-#TODO: which was created by zip_file_with_VERSION
 #TODO: After completing structure, update readme.md and add concept diagram of information flow
 
 #use credentials through credentials.json
