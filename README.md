@@ -6,6 +6,7 @@ and keeping file versions updated. The code uses Python 3.7 (Pycharm IDE) with r
 
 As of now individual functions in "GDrive", "updater", and "file_utils" should run fine as long as the local file paths 
 are edited for whatever you intend to upload/download/zip, you create Credentials detailed below in Uploader Setup,
+store your desired upload file in the File_of_interest directory, 
 and the github yaml url is changed to yours in updater and GDrive's delete_files_from_drive.
 
 Main.py is being currently used for testing and is still under development for an upload loop which incorporates yaml updates and zipfile creation automatically
