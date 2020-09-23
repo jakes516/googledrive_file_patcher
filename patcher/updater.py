@@ -52,4 +52,4 @@ def download_latest_version():
     #run something
     #when checking version use a version.txt in the folder don't have it in filename
     #include LICENSE.txt
-download_latest_version()
+#download_latest_version()

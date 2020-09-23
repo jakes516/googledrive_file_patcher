@@ -98,7 +98,7 @@ class DriveUtil:
         filesize = os.path.getsize(filename)
         headers = {"Authorization": "Bearer " + self.access_token, "Content-Type": "application/json"}
         params = {
-            "name": "v1.1.2.jpg.zip",
+            "name": f"{self.version_input}.zip",
             "mimeType": "application/zip"
         }
         r = requests.post(
