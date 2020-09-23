@@ -13,7 +13,6 @@ def download_latest_version():
     session = requests.Session()
     response = session.get(ver_URL)
     versions = yaml.load(response.text, Loader = yaml.FullLoader)
-    #must have version.txt instead of using path
     print(versions)
 
     latest_version = versions['version'][0]
@@ -52,4 +51,3 @@ def download_latest_version():
     #run something
     #when checking version use a version.txt in the folder don't have it in filename
     #include LICENSE.txt
-download_latest_version()

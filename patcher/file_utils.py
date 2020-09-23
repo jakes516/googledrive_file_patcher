@@ -16,14 +16,14 @@ def unzip_file(file, destination, deleteZip = True):
         os.remove(file)
 
 
-# automate zipping and prompting version number
+# this function automates zipping and prompting version number
 
 #An intermediate VERSION_test.txt file will be created during this process outside of the zip file within the patcher directory.
 # DO NOT DELETE THIS, it is necessary for updating the yaml, the update yaml function will delete it after it finishes.
 def zip_file_with_VERSION(zip_name, file):
     while True:
 
-            #TODO: use version_input for param name in upload_to_drive function as well!
+
             version_input = str(input("\nPlease type the version number in the form v#.#.#\n"))
             regex = re.compile(r"^[vV](\d.){2}\d$")
             if regex.match(version_input):
@@ -40,11 +40,8 @@ def zip_file_with_VERSION(zip_name, file):
         #enter arcname = to relative game file name
         myzip.write(file, arcname='./wasp.jpg')
         myzip.write('./VERSION_test.txt', arcname = './VERSION.txt')
-        #os.remove('./VERSION_test.txt')
         #enter path in File_of_interest directory
-#zip_file_with_VERSION('test_file.zip', "./File_of_interest/wasp.jpg")
 
-#TODO: change wasp test file path to relative path by creating new file_of_interest/game_projects directory
-#TODO: and rewrite the path to open whatever is in this directory
+
 
 

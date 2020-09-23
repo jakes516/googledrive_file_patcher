@@ -50,7 +50,7 @@ Auth2Client = ExampleOAuth2Client(str(credentials['client_id']),
 
 
 
-#drive utility for downloading, uploading, sharing
+#drive utility for downloading, zipping/version, uploading, sharing
 class DriveUtil:
     '''
     This is a google drive util to upload files to google drive, download them, and open the file for public access
@@ -94,8 +94,6 @@ class DriveUtil:
 
     def upload_to_drive(self):
         #assign path to file being uploaded as filename
-        #TODO: CHANGE UPLOAD PATH TO RELATIVE PATH, AND change param name to match VERSION input in zip_file
-        #TODO: function
         ## ./patcher/test_file.zip change path to relative path in directory
         filename = r'./test_file.zip'
         filesize = os.path.getsize(filename)
@@ -135,9 +133,7 @@ class DriveUtil:
         print(response.text.encode('utf8'))
 
 
-# immediately Update yaml file on github following an upload by pulling yaml and comparing current version to version.txt of upload
 
-# re-organize upload/download directories and create function to zip game file and prompt version in VERSION.txt prior to upload,
 
     #deletes all old versions listed in yaml from drive
     def delete_files_from_drive(self):
@@ -166,7 +162,7 @@ class DriveUtil:
             r = requests.delete(f"https://www.googleapis.com/drive/v3/files/{id_value}",
                                 headers=headers)
 
-# develop function to automate updating local yamal, then push to github
+# function to automate updating local yamal, developing automated add, commit, push to github
     #must be run IMMEDIATELY following the upload function
     def update_yaml(self):
         id = self.remote_file_info["id"]
@@ -194,7 +190,6 @@ class DriveUtil:
                     version_info['version'][0] = {f'{new_version}': {'file_id': f'{file_id_numbers}'}}
                     with open(file_name, 'w+') as local_yaml:
                         yaml.safe_dump(version_info, local_yaml)
-                    #TODO: add version_test remove to while loop in main
         os.remove('./VERSION_test.txt')
                     #print(id)
 #TODO make update yamal function automatically push to github
@@ -202,7 +197,7 @@ class DriveUtil:
     def zip_file_with_VERSION(self, zip_name, file):
         while True:
 
-            # TODO: use version_input for param name in upload_to_drive function as well!
+
             self.version_input = str(input("\nPlease type the version number in the form v#.#.#\n"))
             regex = re.compile(r"^[vV](\d.){2}\d$")
             if regex.match(self.version_input):
@@ -219,6 +214,4 @@ class DriveUtil:
             # enter arcname = to relative game file name
             myzip.write(file, arcname='./wasp.jpg')
             myzip.write('./VERSION_test.txt', arcname = './VERSION.txt')
-            # os.remove('./VERSION_test.txt')
-            # enter path in File_of_interest directory
-    # zip_file_with_VERSION('test_file.zip', "./File_of_interest/wasp.jpg")
+            # enter file path in File_of_interest directory

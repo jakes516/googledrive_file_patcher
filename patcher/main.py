@@ -14,7 +14,7 @@ import os
 
 
 
-
+##download_latest_version main file code below
 # while True:
 #     try:
 #         os.chdir('./patcher')
@@ -30,8 +30,6 @@ import os
 #         if restart.lower() != 'yes':
 #             break
 #TODO: Now finish fixing paths to relative paths, have update yaml function auto push to github,
-#TODO: have zip_file_with_VERSION use version input for google drive naming in upload to drive params
-#TODO:
 
 gDrive = DriveUtil()
 gDrive.zip_file_with_VERSION('test_file.zip', "./File_of_interest/wasp.jpg")
