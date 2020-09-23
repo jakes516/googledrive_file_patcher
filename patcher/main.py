@@ -2,7 +2,6 @@ from GDrive import DriveUtil
 from file_utils import unzip_file
 from updater import download_latest_version
 import os
-from file_utils import zip_file_with_VERSION
 
 
 
@@ -33,9 +32,10 @@ from file_utils import zip_file_with_VERSION
 #TODO: Now finish fixing paths to relative paths, have update yaml function auto push to github,
 #TODO: have zip_file_with_VERSION use version input for google drive naming in upload to drive params
 #TODO:
-zip_file_with_VERSION('test_file.zip', "./File_of_interest/wasp.jpg")
 
 gDrive = DriveUtil()
+gDrive.zip_file_with_VERSION('test_file.zip', "./File_of_interest/wasp.jpg")
+
 gDrive.upload_to_drive()
 
 gDrive.share_file_to_public()

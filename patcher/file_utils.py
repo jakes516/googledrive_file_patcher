@@ -18,7 +18,7 @@ def unzip_file(file, destination, deleteZip = True):
 
 # automate zipping and prompting version number
 
-#An intermediate VERSION.txt file will be created during this process outside of the zip file within the patcher directory.
+#An intermediate VERSION_test.txt file will be created during this process outside of the zip file within the patcher directory.
 # DO NOT DELETE THIS, it is necessary for updating the yaml, the update yaml function will delete it after it finishes.
 def zip_file_with_VERSION(zip_name, file):
     while True:
@@ -39,7 +39,7 @@ def zip_file_with_VERSION(zip_name, file):
 
         #enter arcname = to relative game file name
         myzip.write(file, arcname='./wasp.jpg')
-        myzip.write('./VERSION_test.txt')
+        myzip.write('./VERSION_test.txt', arcname = './VERSION.txt')
         #os.remove('./VERSION_test.txt')
         #enter path in File_of_interest directory
 #zip_file_with_VERSION('test_file.zip', "./File_of_interest/wasp.jpg")

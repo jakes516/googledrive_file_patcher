@@ -3,6 +3,9 @@ import os
 import requests
 from rauth import OAuth2Service
 import yaml
+import re
+import zipfile
+
 #bearer token generator for google drive api
 class ExampleOAuth2Client:
     def __init__(self, client_id, client_secret):
@@ -192,7 +195,7 @@ class DriveUtil:
                     with open(file_name, 'w+') as local_yaml:
                         yaml.safe_dump(version_info, local_yaml)
                     #TODO: add version_test remove to while loop in main
-                    #os.remove('./VERSION_test.txt')
+        os.remove('./VERSION_test.txt')
                     #print(id)
 #TODO make update yamal function automatically push to github
 
@@ -215,7 +218,7 @@ class DriveUtil:
 
             # enter arcname = to relative game file name
             myzip.write(file, arcname='./wasp.jpg')
-            myzip.write('./VERSION_test.txt')
+            myzip.write('./VERSION_test.txt', arcname = './VERSION.txt')
             # os.remove('./VERSION_test.txt')
             # enter path in File_of_interest directory
     # zip_file_with_VERSION('test_file.zip', "./File_of_interest/wasp.jpg")
