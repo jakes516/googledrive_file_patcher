@@ -196,4 +196,26 @@ class DriveUtil:
                     #print(id)
 #TODO make update yamal function automatically push to github
 
+    def zip_file_with_VERSION(self, zip_name, file):
+        while True:
 
+            # TODO: use version_input for param name in upload_to_drive function as well!
+            self.version_input = str(input("\nPlease type the version number in the form v#.#.#\n"))
+            regex = re.compile(r"^[vV](\d.){2}\d$")
+            if regex.match(self.version_input):
+                with open('VERSION_test.txt', 'w') as f:
+                    f.write(self.version_input)
+                print("Version number updated.")
+                break
+            else:
+                print("\nThe version number you entered is in an improper form. \nPlease re-enter the version number\n")
+                continue
+
+        with zipfile.ZipFile(zip_name, 'w') as myzip:
+
+            # enter arcname = to relative game file name
+            myzip.write(file, arcname='./wasp.jpg')
+            myzip.write('./VERSION_test.txt')
+            # os.remove('./VERSION_test.txt')
+            # enter path in File_of_interest directory
+    # zip_file_with_VERSION('test_file.zip', "./File_of_interest/wasp.jpg")
