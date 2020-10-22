@@ -20,8 +20,7 @@ and paste it in the *Scripts* directory. Then run the command `pip install -r re
 Your environment setup should be ready to go.
 
 
-, 
-and change the [*raw github yaml url*](patcher/version_history/versions.yaml) (stored in the variable "ver_URL") to your repository's at the top of [*updater*.**download_the_latest_version**](patcher/updater.py).
+Make sure to change the [*raw github yaml url*](patcher/version_history/versions.yaml) (stored in the variable "ver_URL") to your repository's raw URL near the top of [*updater*.**download_the_latest_version**](patcher/updater.py).
 
 And in [*GDrive*.**delete_files_from_drive**](patcher/GDrive.py).(It is the 7th method of DriveUtil). 
 
