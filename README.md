@@ -47,7 +47,7 @@ The command line window is left open to read, press enter to close it after they
 ## Uploader Setup
 In order to run the uploader portion of this code you will need to create a [Google Account](https://accounts.google.com/signup/v2/webcreateaccount?hl=en&flowName=GlifWebSignIn&flowEntry=SignUp) and access your [Google Drive](https://drive.google.com/). 
 You will also need to authorize credentials for a web application in the Google developers console and obtain a permanent refresh token from OAuth2Playground. 
-Follow the links below to generate your account credentials.
+Follow the link below to generate your account OAuth2 Playground credentials.
 
 - Skip down to section named **OAuth2 Playground** [Create OAuth2 Credentials](https://developers.google.com/adwords/api/docs/guides/authentication)
 
