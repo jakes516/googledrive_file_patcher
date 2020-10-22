@@ -42,7 +42,7 @@ Follow the links below to generate your account credentials.
 - Create Authorization Credentials [OAuth2 Authenication](https://developers.google.com/adwords/api/docs/guides/authentication)
 - [Google Developers Console](https://console.developers.google.com/)
 
-###### IMPORTANT
+##### IMPORTANT
 Be sure to rename the provided Credentials_placeholder directory to "Credentials" and the rename the existing client_credentials_placeholder.json file to "client_credentials.json".
 The patcher functions depend on these specific credential file names for relative paths.
 
