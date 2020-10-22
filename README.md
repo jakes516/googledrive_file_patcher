@@ -9,9 +9,10 @@ are edited for whatever you intend to upload/download/zip, you create Credential
 store your desired upload file in the File_of_interest directory, 
 and the github yaml url is changed to yours in updater and GDrive's delete_files_from_drive.
 
-Main.py is being currently used for testing and is still under development for an upload loop which incorporates yaml updates and zipfile creation automatically
-upon selecting a file to upload.
+Main.py now compresses the file you have in File_of_interest with a prompt for version number, uploads the zipfile with a version.txt to drive,
+opens this file for public access/sharing, updates the local version_history.yaml file and pushes this update to github.
 
+Separate download_latest_file.py now downloads the latest version listed on your github's version_history.yaml from drive.
 
 ## Structure
 - Google Drive + Drive API v3
