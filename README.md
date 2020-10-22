@@ -12,7 +12,7 @@ from the googledrive_game_patcher directory, and paste it in the Scripts directo
 Your environment setup should be ready to go.
 
 As of now the patcher is completely functional, be sure you create Credentials detailed below in Uploader Setup, store your desired upload file in the File_of_interest directory, 
-and the github yaml url is changed to yours in updater and GDrive's delete_files_from_drive.
+and change the raw github yaml url (ver_URL) to yours at the top of updater's download_the_latest_version and also GDrive's delete_files_from_drive.
 
 Main.py now compresses the file you have in File_of_interest with a prompt for version number, uploads the zipfile with a version.txt to drive,
 opens this file for public access/sharing, updates the local version_history.yaml file and pushes this update to github.
@@ -21,6 +21,8 @@ A separate download_latest_file.py now downloads the latest version listed on yo
 
 The uploader.sh and downloader.sh files have now been added and are functional; they run the shell_file.py's which contain modified paths for main.py and download_latest_file.py.
 The command line window is left open to read, press enter to close it after they have run.
+
+GDrive.py, file_utils.py, and updater.py are where all important functions are coded.
 
 ## Structure
 - Google Drive + Drive API v3
