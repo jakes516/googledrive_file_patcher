@@ -205,7 +205,7 @@ class DriveUtil:
         except FileNotFoundError:
             # Creates yaml file placeholder to be updated if you do not have one
             print("You do not have a versions.yaml file . . . let me make one for you.")
-            yaml_version_format = {'version': [{'version.placeholder': {'file_id.placeholder': 'id.placeholder'}}],
+            yaml_version_format = {'version': [{f'{self.version_input}': {'file_id': f'{id}'}}],
                                    'version_history': [{'v.placeholder': {'file_id.placeholder': 'id.placeholder'}}]}
             yaml_string_format = str(yaml.dump(yaml_version_format))
 
