@@ -20,7 +20,7 @@ and change the [*raw github yaml url*](patcher/version_history/versions.yaml) (s
 
 And in [*GDrive*.**delete_files_from_drive**](patcher/GDrive.py).(It is the 7th method of DriveUtil). 
 
-Also be sure to create auth Credentials detailed below in the Uploader Setup section.
+Also be sure to create OAuth2 Playground Credentials detailed below in the Uploader Setup section.
 
 ## Functionality
 [*Main.py*](patcher/main.py) now compresses the file you have in [*File_of_interest*](patcher/File_of_interest) with a prompt for version number, uploads the zipfile with a [*VERSION.txt*](patcher/Game_Files/VERSION.txt) to drive,
@@ -49,7 +49,7 @@ In order to run the uploader portion of this code you will need to create a [Goo
 You will also need to authorize credentials for a web application in the Google developers console and obtain a permanent refresh token from OAuth2Playground. 
 Follow the links below to generate your account credentials.
 
-- Create Authorization Credentials [OAuth2 Authenication](https://developers.google.com/adwords/api/docs/guides/authentication)
+- Skip down to section named **OAuth2 Playground** [Create OAuth2 Credentials](https://developers.google.com/adwords/api/docs/guides/authentication)
 - [Google Developers Console](https://console.developers.google.com/)
 
 ##### **IMPORTANT**
