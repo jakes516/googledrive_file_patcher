@@ -16,7 +16,7 @@ Your environment setup should be ready to go.
 
 
 Be sure to store your desired upload file in the [*File_of_interest*](patcher/File_of_interest) directory, 
-and change the [*raw github yaml url*](patcher/version_history/versions.yaml) ("ver_URL") to your repository's at the top of [*updater*.**download_the_latest_version**](patcher/updater.py).
+and change the [*raw github yaml url*](patcher/version_history/versions.yaml) (stored in the variable "ver_URL") to your repository's at the top of [*updater*.**download_the_latest_version**](patcher/updater.py).
 
 And in [*GDrive*.**delete_files_from_drive**](patcher/GDrive.py).(It is the 7th method of DriveUtil). 
 
