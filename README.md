@@ -63,8 +63,9 @@ Be sure to add the *Credentials* directory to your .gitignore (save patcher/Cred
 
 
 ## Downloader Setup
-In order for the downloader to run appropriately you need a [*VERSION.txt*](patcher/Game_Files/VERSION.txt) file containing the current file version number present in your [*Game_files*](patcher/Game_Files) directory.
-If you do not have a [*VERSION.txt*](patcher/Game_Files/VERSION.txt) it will automatically clear your [*Game_files*](patcher/Game_Files) directory and download the latest game files from Google Drive.
+If you have already changed the [*raw github yaml url*](patcher/version_history/versions.yaml) (stored in the variable "ver_URL") to your repository's url at the top of [*updater*.**download_the_latest_version**](patcher/updater.py) 
+the downloader should run appropriately. If you do not have a [*VERSION.txt*](patcher/Game_Files/VERSION.txt) it will automatically clear 
+your [*Game_files*](patcher/Game_Files) directory and download the latest files from Google Drive.
 
 ## Future Updates
 Will update this readme if there are any future developments.
