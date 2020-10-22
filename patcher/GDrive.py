@@ -92,10 +92,10 @@ class DriveUtil:
                 if chunk:  # filter out keep-alive new chunks
                     f.write(chunk)
 
-    def upload_to_drive(self):
+    def upload_to_drive(self, zip_name):
         #assign path to file being uploaded as filename
         ## ./patcher/test_file.zip change path to relative path in directory
-        filename = r'./test_file.zip'
+        filename = f'./{zip_name}'
         filesize = os.path.getsize(filename)
         headers = {"Authorization": "Bearer " + self.access_token, "Content-Type": "application/json"}
         params = {
@@ -170,7 +170,7 @@ class DriveUtil:
         file_id_numbers = id
         file_name = "./version_history/versions.yaml"
         try:
-            version_txt_file = "./VERSION_test.txt"
+            version_txt_file = "./VERSION_temporary.txt"
         except FileNotFoundError:
             print('You have not zipped and uploaded a new file and version_file since your last yaml update.')
         with open(file_name) as local_yaml:
@@ -190,18 +190,27 @@ class DriveUtil:
                     version_info['version'][0] = {f'{new_version}': {'file_id': f'{file_id_numbers}'}}
                     with open(file_name, 'w+') as local_yaml:
                         yaml.safe_dump(version_info, local_yaml)
-        os.remove('./VERSION_test.txt')
+        os.remove('./VERSION_temporary.txt')
                     #print(id)
 #TODO make update yamal function automatically push to github
+    def auto_git_update_yaml(self):
+        os.chdir('..')
+        os.system('git add patcher/version_history')
+        os.system('git commit -m "auto version_history.yaml update')
+        os.system('git push origin master')
 
-    def zip_file_with_VERSION(self, zip_name, file):
+    def zip_file_with_VERSION(self, zip_name):
+        #get rid of file variable and add determined relative path
+        for filename in os.listdir("File_of_interest"):
+            file = str(os.path.join(os.getcwd(), "File_of_interest\\"+filename))
+        game_name = file.rsplit('\\', 1)
         while True:
 
 
             self.version_input = str(input("\nPlease type the version number in the form v#.#.#\n"))
             regex = re.compile(r"^[vV](\d.){2}\d$")
             if regex.match(self.version_input):
-                with open('VERSION_test.txt', 'w') as f:
+                with open('VERSION_temporary.txt', 'w') as f:
                     f.write(self.version_input)
                 print("Version number updated.")
                 break
@@ -212,6 +221,8 @@ class DriveUtil:
         with zipfile.ZipFile(zip_name, 'w') as myzip:
 
             # enter arcname = to relative game file name
-            myzip.write(file, arcname='./wasp.jpg')
-            myzip.write('./VERSION_test.txt', arcname = './VERSION.txt')
+            myzip.write(file, arcname=game_name[1])
+            myzip.write('./VERSION_temporary.txt', arcname = './VERSION.txt')
             # enter file path in File_of_interest directory
+
+

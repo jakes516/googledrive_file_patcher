@@ -1,7 +1,7 @@
 from GDrive import DriveUtil
-from file_utils import unzip_file
-from updater import download_latest_version
-import os
+# from file_utils import unzip_file
+# from updater import download_latest_version
+# import os
 
 
 
@@ -31,14 +31,19 @@ import os
 #             break
 #TODO: Now finish fixing paths to relative paths, have update yaml function auto push to github,
 
-gDrive = DriveUtil()
-gDrive.zip_file_with_VERSION('test_file.zip', "./File_of_interest/wasp.jpg")
+if __name__ == '__main__':
+    #Name your zip file to be uploaded to drive
+    zip_name = str('your_game_zipfile.zip')
+    gDrive = DriveUtil()
+    gDrive.zip_file_with_VERSION(zip_name)
 
-gDrive.upload_to_drive()
+    gDrive.upload_to_drive(zip_name)
 
-gDrive.share_file_to_public()
+    gDrive.share_file_to_public()
 
-gDrive.update_yaml()
+    gDrive.update_yaml()
+
+    gDrive.auto_git_update_yaml()
 
 
 
