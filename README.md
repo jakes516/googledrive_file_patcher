@@ -6,7 +6,12 @@ and keeping file versions updated. The code uses Python 3.7 (Pycharm IDE) with r
 (All dependencies listed in requirements.txt)
 
 ## Getting Started
-All code is contained within the [*patcher*](patcher) directory, and as of now the patcher is completely functional.
+All code is contained within the [*patcher*](patcher) directory, and as of now the patcher is completely functional. Feel free to delete the placeholder files in [*File_of_interest*](patcher/File_of_interest),
+[*versions.yaml*](patcher/version_history/versions.yaml), and [*Game_files*](patcher/Game_Files). Then be sure to store your desired upload file in the [*File_of_interest*](patcher/File_of_interest) directory.
+The patcher will automatically create a new *versions.yaml* file upon your first use of the upload loop in [*Main.py*](patcher/main.py), and [*download_file.py*](patcher/download_file.py) will replace your *Game_Files* directory
+or create one if it does not exist.
+ 
+ 
 
 
 I suggest creating a virtual environment by using your command line/shell to `cd` into the *googledrive_file_patcher* directory, and running the command `python -m venv venv`. 
@@ -15,7 +20,7 @@ and paste it in the *Scripts* directory. Then run the command `pip install -r re
 Your environment setup should be ready to go.
 
 
-Be sure to store your desired upload file in the [*File_of_interest*](patcher/File_of_interest) directory, 
+, 
 and change the [*raw github yaml url*](patcher/version_history/versions.yaml) (stored in the variable "ver_URL") to your repository's at the top of [*updater*.**download_the_latest_version**](patcher/updater.py).
 
 And in [*GDrive*.**delete_files_from_drive**](patcher/GDrive.py).(It is the 7th method of DriveUtil). 
