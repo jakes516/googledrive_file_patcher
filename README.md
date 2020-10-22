@@ -22,6 +22,8 @@ and change the raw github yaml url ("ver_URL") to yours at the top of *updater.p
 - [*updater*.**download_the_latest_version**](patcher/updater.py)
 - [*GDrive*.**delete_files_from_drive**](patcher/GDrive.py)
 
+
+## Functionality
 *Main.py* now compresses the file you have in *File_of_interest* with a prompt for version number, uploads the zipfile with a *VERSION.txt* to drive,
 opens this file for public access/sharing, updates the local *version_history.yaml* file and pushes this update to github.
 - [*Main.py*](patcher/main.py)
