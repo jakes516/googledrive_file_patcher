@@ -5,14 +5,14 @@ This repository is a patcher for uploading, downloading, and unzipping google dr
 and keeping file versions updated. The code uses Python 3.7 (Pycharm IDE) with re, requests, os, yaml, pathlib, json, zipfile, and OAuth2Service modules installed.
 
 As of now the patcher is completely functional, be sure you create Credentials detailed below in Uploader Setup, store your desired upload file in the File_of_interest directory, 
-and the github yaml url is changed to yours in updater and GDrive's delete_files_from_drive. 
+and the github yaml url is changed to yours in updater and GDrive's delete_files_from_drive.
 
 Main.py now compresses the file you have in File_of_interest with a prompt for version number, uploads the zipfile with a version.txt to drive,
 opens this file for public access/sharing, updates the local version_history.yaml file and pushes this update to github.
 
 A separate download_latest_file.py now downloads the latest version listed on your github's version_history.yaml from drive.
 
-The uploader.sh and downloader.sh files have now been added and are fucntional; they run the shell_file.py's which contain modified paths for main.py and download_latest_file.py.
+The uploader.sh and downloader.sh files have now been added and are functional; they run the shell_file.py's which contain modified paths for main.py and download_latest_file.py.
 
 ## Structure
 - Google Drive + Drive API v3
