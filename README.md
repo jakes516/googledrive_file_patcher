@@ -10,13 +10,13 @@ All code is contained within the [*patcher*](patcher) directory, and as of now t
 
 
 I suggest creating a virtual environment by using your command line/shell to `cd` into the *googledrive_game_patcher* directory, and running the command `python -m venv venv`. 
-I have included a [*requirements.txt*](requirements.txt) file to easily install all dependencies. Navigate to the *Scripts* directory of the above/your venv, cut the included [*requirements.txt*](requirements.txt) file
-from the *googledrive_game_patcher* directory, and paste it in the *Scripts* directory. Then run the command `pip install -r requirements.txt` in your command line/shell.
+I have included a [*requirements.txt*](requirements.txt) file to easily install all dependencies. Navigate to the *Scripts* directory of the above/your venv, cut the included [*requirements.txt*](requirements.txt) file, 
+and paste it in the *Scripts* directory. Then run the command `pip install -r requirements.txt` in your command line/shell.
 Your environment setup should be ready to go.
 
 
 Be sure to store your desired upload file in the [*File_of_interest*](patcher/File_of_interest) directory, 
-and change the raw github yaml url ("ver_URL") to your repository's at the top of [*updater*.**download_the_latest_version**](patcher/updater.py).
+and change the [*raw github yaml url*](patcher/version_history/versions.yaml) ("ver_URL") to your repository's at the top of [*updater*.**download_the_latest_version**](patcher/updater.py).
 
 And in [*GDrive*.**delete_files_from_drive**](patcher/GDrive.py).(It is the 7th method of DriveUtil). 
 
