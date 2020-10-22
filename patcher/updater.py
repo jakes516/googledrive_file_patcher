@@ -3,12 +3,10 @@ from file_utils import unzip_file
 from GDrive import DriveUtil
 import yaml
 import requests
-import os
-import pathlib
 
-#checks current file version and downloads latest if not up to date.
+#Checks current file version and downloads latest if not up to date.
 def download_latest_version():
-    #print(os.getcwd())
+    #Getting versions.yaml info from github. Enter the raw github url to your versions.yaml as ver_URL below.
     ver_URL = "https://raw.githubusercontent.com/jakes516/googledrive_game_patcher/master/patcher/version_history/versions.yaml"
     session = requests.Session()
     response = session.get(ver_URL)
@@ -16,15 +14,13 @@ def download_latest_version():
     print(versions)
 
     latest_version = versions['version'][0]
-    #latest_version_id = versions['version'][0]['v1.0.0']['file_id']
-    #print(latest_version_id)
 
+    #Getting version file_id for drive download.
     for version_number, id in latest_version.items():
         latest_version_number = version_number
         file_id = id['file_id']
-    #print(latest_version_number)
-    #print(current_file.name)
-    #print(file_id)
+
+    #Running loop to check if you have version.txt and compare your version number to the github one.
     while True:
         try:
             current_file = open('./Game_Files/VERSION.txt')
@@ -47,7 +43,3 @@ def download_latest_version():
             gDrive.download_file_from_google_drive(file_id, destination)
             unzip_file("./temporary.zip", "./Game_Files", deleteZip=False)
             break
-
-    #run something
-    #when checking version use a version.txt in the folder don't have it in filename
-    #include LICENSE.txt

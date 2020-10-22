@@ -6,7 +6,7 @@ import yaml
 import re
 import zipfile
 
-#bearer token generator for google drive api
+# Bearer token generator for google drive api
 class ExampleOAuth2Client:
     def __init__(self, client_id, client_secret):
         self.access_token = None
@@ -23,12 +23,14 @@ class ExampleOAuth2Client:
         self.get_access_token()
 
     def get_access_token(self):
-        #loading json file with client_id, client_secret, refresh_token
+        # Loading json file with client_id, client_secret, refresh_token
+
         cred = open(str(os.path.join(os.getcwd(), 'Credentials\client_credentials.json')))
         credentials = json.load(cred)
         cred.close()
         data = {
-            #refresh token generated on Oauth2.0playground goes below
+            # Refresh token generated on Oauth2.0playground is placed below from your credentials.json
+
             'refresh_token': str(credentials['refresh_token']),
             'grant_type': 'refresh_token',
             'redirect_uri': 'https://developers.google.com/oauthplayground'}
@@ -39,30 +41,34 @@ class ExampleOAuth2Client:
         return session.access_token
 
 
-
+# Loading credentials info to be used for auth.
 cred = open(str(os.path.join(os.getcwd(), 'Credentials\client_credentials.json')))
 credentials = json.load(cred)
 cred.close()
 
-#enter the client_id, client_secret credentials created on console.developers.google.com here
+# The client_id, client_secret credentials created on console.developers.google.com placed here using your credentials.json.
+
+# Authorizing using credentials.
 Auth2Client = ExampleOAuth2Client(str(credentials['client_id']),
                                       str(credentials['client_secret']))
 
 
 
-#drive utility for downloading, zipping/version, uploading, sharing
+# Drive utility for downloading, zipping/version, uploading, sharing, and updating versions.yaml.
 class DriveUtil:
     '''
     This is a google drive util to upload files to google drive, download them, and open the file for public access
 
     '''
     def __init__(self):
-        self.access_token = str(Auth2Client.get_access_token())
-    #alert deleting everything in temp before download (google how to delete stuff from temp (maybe shutil)
+        #Defining access token you generated for all upload code being run.
 
+        self.access_token = str(Auth2Client.get_access_token())
 
 
     def download_file_from_google_drive(self, file_id, destination):
+        # Drive download function used in updater.py
+
         URL = "https://docs.google.com/uc?export=download"
 
         session = requests.Session()
@@ -93,8 +99,8 @@ class DriveUtil:
                     f.write(chunk)
 
     def upload_to_drive(self, zip_name):
-        #assign path to file being uploaded as filename
-        ## ./patcher/test_file.zip change path to relative path in directory
+        # Naming file and uploading to drive
+
         filename = f'./{zip_name}'
         filesize = os.path.getsize(filename)
         headers = {"Authorization": "Bearer " + self.access_token, "Content-Type": "application/json"}
@@ -119,6 +125,8 @@ class DriveUtil:
         self.remote_file_info = json.loads(r.text)
 
     def share_file_to_public(self):
+        # Enabling public access to drive file through file_id link.
+
         id = self.remote_file_info["id"]
         url = f"https://www.googleapis.com/drive/v3/files/{id}/permissions"
 
@@ -135,26 +143,24 @@ class DriveUtil:
 
 
 
-    #deletes all old versions listed in yaml from drive
+    # Deletes all old versions listed in yaml from drive
     def delete_files_from_drive(self):
         ver_URL = "https://raw.githubusercontent.com/jakes516/tempgame_patcher/master/versions.yaml"
         session = requests.Session()
         response = session.get(ver_URL)
         versions = yaml.load(response.text, Loader=yaml.FullLoader)
-        # print(versions)
+
         version_history = versions['version_history']
         file_ids_comp = []
-        # print(version_history)
 
         for numbers in range(len(version_history)):
             file_ids_comp.append(list(version_history[numbers].values()))
-        #print(file_ids_comp)
+
 
         file_ids = []
 
         for ids in range(len([file_ids_comp]) + 1):
             file_ids.append(file_ids_comp[ids][0]['file_id'])
-        #print(file_ids)
 
         headers = {"Authorization": "Bearer " + self.access_token, "Content-Type": "application/json"}
 
@@ -162,11 +168,11 @@ class DriveUtil:
             r = requests.delete(f"https://www.googleapis.com/drive/v3/files/{id_value}",
                                 headers=headers)
 
-# function to automate updating local yamal, developing automated add, commit, push to github
-    #must be run IMMEDIATELY following the upload function
+    # Function to automate updating local yamal, developing automated add, commit, push to github
+    # Must be run IMMEDIATELY following the upload function
     def update_yaml(self):
         id = self.remote_file_info["id"]
-        # why was naming it twice necessary for obtaining the file_id, using only id only gave the dictionary
+
         file_id_numbers = id
         file_name = "./version_history/versions.yaml"
         try:
@@ -175,13 +181,17 @@ class DriveUtil:
             print('You have not zipped and uploaded a new file and version_file since your last yaml update.')
         try:
             with open(file_name) as local_yaml:
-
+                # Finding latest version from yaml.
                 version_info = yaml.safe_load(local_yaml)
                 print(version_info)
                 latest_version = version_info['version'][0]
+
+                # Finding latest version number.
                 for version_number, id in latest_version.items():
                     latest_version_number = version_number
                 print(latest_version_number)
+
+                #Comparing latest version number with current local version, and updating if different.
                 with open(version_txt_file) as version_txt_file_open:
                     new_version = version_txt_file_open.read()
                     if latest_version_number in version_txt_file_open:
@@ -193,7 +203,7 @@ class DriveUtil:
                         with open(file_name, 'w+') as local_yaml:
                             yaml.safe_dump(version_info, local_yaml)
         except FileNotFoundError:
-    #create yaml file placeholder to be updated if you do not have one
+            # Creates yaml file placeholder to be updated if you do not have one
             print("You do not have a versions.yaml file . . . let me make one for you.")
             yaml_version_format = {'version': [{'version.placeholder': {'file_id.placeholder': 'id.placeholder'}}],
                                    'version_history': [{'v.placeholder': {'file_id.placeholder': 'id.placeholder'}}]}
@@ -204,24 +214,27 @@ class DriveUtil:
             with open(completeName, "w") as f:
                f.write(yaml_string_format)
         os.remove('./VERSION_temporary.txt')
-                    #print(id)
-#TODO make update yamal function automatically push to github
+
+
     def auto_git_update_yaml(self):
+        # Automatically adds, commits, and pushes to github.
+
         os.chdir('..')
         os.system('git add patcher/version_history')
         os.system('git commit -m "auto version_history.yaml update')
         os.system('git push origin master')
 
     def zip_file_with_VERSION(self, zip_name):
-        #get rid of file variable and add determined relative path
+        # Zips file, and prompts version number user input.
+
         for filename in os.listdir("File_of_interest"):
             file = str(os.path.join(os.getcwd(), "File_of_interest\\"+filename))
         game_name = file.rsplit('\\', 1)
+
         while True:
 
-
-            self.version_input = str(input("\nPlease type the version number in the form v#.#.#\n"))
-            regex = re.compile(r"^[vV](\d.){2}\d$")
+            self.version_input = str(input("\nPlease type the version number in the form v##.##.##\n"))
+            regex = re.compile(r"^[vV](\d\d.){2}\d\d$")
             if regex.match(self.version_input):
                 with open('VERSION_temporary.txt', 'w') as f:
                     f.write(self.version_input)
@@ -231,11 +244,10 @@ class DriveUtil:
                 print("\nThe version number you entered is in an improper form. \nPlease re-enter the version number\n")
                 continue
 
+        # Zips chosen file with version.txt file.
         with zipfile.ZipFile(zip_name, 'w') as myzip:
 
-            # enter arcname = to relative game file name
             myzip.write(file, arcname=game_name[1])
             myzip.write('./VERSION_temporary.txt', arcname = './VERSION.txt')
-            # enter file path in File_of_interest directory
 
 

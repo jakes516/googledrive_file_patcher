@@ -1,5 +1,6 @@
 import os
 
+#Changing cwd to work with .sh file.
 os.chdir(os.path.join(os.getcwd(), 'patcher'))
 
 from GDrive import DriveUtil
