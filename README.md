@@ -1,18 +1,16 @@
 # Google Drive Game Patcher
 
 ## Description
-This repository is an in-development patcher for uploading, downloading, and unzipping google drive files, opening the drive files to public access, 
+This repository is a patcher for uploading, downloading, and unzipping google drive files, opening the drive files to public access, 
 and keeping file versions updated. The code uses Python 3.7 (Pycharm IDE) with re, requests, os, yaml, pathlib, json, zipfile, and OAuth2Service modules installed.
 
-As of now individual functions in "GDrive", "updater", and "file_utils" should run fine as long as the local file paths 
-are edited for whatever you intend to upload/download/zip, you create Credentials detailed below in Uploader Setup,
-store your desired upload file in the File_of_interest directory, 
-and the github yaml url is changed to yours in updater and GDrive's delete_files_from_drive.
+As of now the patcher is completely functional, be sure you create Credentials detailed below in Uploader Setup, store your desired upload file in the File_of_interest directory, 
+and the github yaml url is changed to yours in updater and GDrive's delete_files_from_drive. 
 
 Main.py now compresses the file you have in File_of_interest with a prompt for version number, uploads the zipfile with a version.txt to drive,
 opens this file for public access/sharing, updates the local version_history.yaml file and pushes this update to github.
 
-Separate download_latest_file.py now downloads the latest version listed on your github's version_history.yaml from drive.
+A separate download_latest_file.py now downloads the latest version listed on your github's version_history.yaml from drive.
 
 ## Structure
 - Google Drive + Drive API v3
@@ -47,4 +45,4 @@ In order for the downloader to run appropriately you need a VERSION.txt file wit
 If you do not have a VERSION.txt it will automatically clear your Game_files directory and download the latest game files from Google Drive.
 
 ## Future Updates
-Will update this read_me throughout development.
+Will update this read_me if there are any future developments.
