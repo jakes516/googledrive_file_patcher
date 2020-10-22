@@ -17,11 +17,14 @@ Your environment setup should be ready to go.
 - [Requirements](requirements.txt)
 
 
-Be sure you create Credentials detailed below in the Uploader Setup section, store your desired upload file in the *File_of_interest* directory, 
-and change the raw github yaml url ("ver_URL") to yours at the top of *updater.py*'s **download_the_latest_version** and also *GDrive.py's*  **DriveUtil.delete_files_from_drive**.(It is the 7th method of DriveUtil).
+Be sure to store your desired upload file in the *File_of_interest* directory, 
+and change the raw github yaml url ("ver_URL") to your repository's at the top of *updater.py*'s **download_the_latest_version**.
+
+And in *GDrive.py's*  **DriveUtil.delete_files_from_drive**.(It is the 7th method of DriveUtil).
 - [*updater*.**download_the_latest_version**](patcher/updater.py)
 - [*GDrive*.**delete_files_from_drive**](patcher/GDrive.py)
 
+Also be sure to create auth Credentials detailed below in the Uploader Setup section.
 
 ## Functionality
 *Main.py* now compresses the file you have in *File_of_interest* with a prompt for version number, uploads the zipfile with a *VERSION.txt* to drive,
