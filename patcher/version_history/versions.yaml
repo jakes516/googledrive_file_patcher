@@ -1,12 +1,6 @@
 version:
-- v12.33.12:
-    file_id: 1XWEsQ96bs-Hkb34TBq_Qo2XqWKBKuqOg
-version_history:
-- v0.2.1:
-    file_id: 1Jp17YZv5jRPch5Y2Naxh64xgqufvduuB
-- v8.0.0:
-    file_id: 1oLLn4XmKrjTXtKKKAPMyevgLNaYNwIJS
 - version.placeholder:
     file_id.placeholder: id.placeholder
+version_history:
 - v.placeholder:
     file_id.placeholder: id.placeholder
