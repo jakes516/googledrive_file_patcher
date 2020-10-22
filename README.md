@@ -7,37 +7,37 @@ and keeping file versions updated. The code uses Python 3.7 (Pycharm IDE) with r
 
 ## Getting Started
 All code is contained within the *patcher* directory, and as of now the patcher is completely functional.
--[Patcher directory](patcher)
+- [Patcher directory](patcher)
 
 
 I suggest creating a virtual environment by using your command line/shell to `cd` into the *googledrive_game_patcher* directory, and running the command `python -m venv venv`. 
 I have included a *requirements.txt* file to easily install all dependencies. Navigate to the *Scripts* directory of the above/your venv, cut the included *requirements.txt* file
 from the *googledrive_game_patcher* directory, and paste it in the *Scripts* directory. Then run the command `pip install -r requirements.txt` in your command line/shell.
 Your environment setup should be ready to go.
--[Requirements](requirements.txt)
+- [Requirements](requirements.txt)
 
 
 Be sure you create Credentials detailed below in the Uploader Setup section, store your desired upload file in the *File_of_interest* directory, 
 and change the raw github yaml url ("ver_URL") to yours at the top of *updater.py*'s **download_the_latest_version** and also *GDrive.py's*  **DriveUtil.delete_files_from_drive**.(It is the 7th method of DriveUtil).
--[*updater*.**download_the_latest_version**](patcher/updater.py)
--[*GDrive*.**delete_files_from_drive**](patcher/GDrive.py)
+- [*updater*.**download_the_latest_version**](patcher/updater.py)
+- [*GDrive*.**delete_files_from_drive**](patcher/GDrive.py)
 
 *Main.py* now compresses the file you have in *File_of_interest* with a prompt for version number, uploads the zipfile with a *VERSION.txt* to drive,
 opens this file for public access/sharing, updates the local *version_history.yaml* file and pushes this update to github.
--[*Main.py*](patcher/main.py)
+- [*Main.py*](patcher/main.py)
 
 A separate *download_file.py* now downloads the latest version listed on your github's *version_history.yaml* from drive.
--[*download_file.py*](patcher/download_file.py)
+- [*download_file.py*](patcher/download_file.py)
 
 The *uploader.sh* and *downloader.sh* files have now been added and are functional; they run the *shell_file.py*'s which contain modified paths for *main.py* and *download_file.py*.
 The command line window is left open to read, press enter to close it after they have run.
--[*uploader.sh*](uploader.sh)
--[*downloader.sh*](downloader.sh)
+- [*uploader.sh*](uploader.sh)
+- [*downloader.sh*](downloader.sh)
 
 *GDrive.py*, *file_utils.py*, and *updater.py* are where all important functions are coded.
--[*GDrive.py*](patcher/GDrive.py)
--[*file_utils.py*](patcher/file_utils.py)
--[*updater.py*](patcher/updater.py)
+- [*GDrive.py*](patcher/GDrive.py)
+- [*file_utils.py*](patcher/file_utils.py)
+- [*updater.py*](patcher/updater.py)
 
 ## Structure
 - Google Drive + Drive API v3
