@@ -12,6 +12,8 @@ opens this file for public access/sharing, updates the local version_history.yam
 
 A separate download_latest_file.py now downloads the latest version listed on your github's version_history.yaml from drive.
 
+The uploader.sh and downloader.sh files have now been added and are fucntional; they run the shell_file.py's which contain modified paths for main.py and download_latest_file.py.
+
 ## Structure
 - Google Drive + Drive API v3
 - OAuth2 Playground
