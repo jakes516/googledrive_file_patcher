@@ -173,23 +173,36 @@ class DriveUtil:
             version_txt_file = "./VERSION_temporary.txt"
         except FileNotFoundError:
             print('You have not zipped and uploaded a new file and version_file since your last yaml update.')
-        with open(file_name) as local_yaml:
-            version_info = yaml.safe_load(local_yaml)
-            print(version_info)
-            latest_version = version_info['version'][0]
-            for version_number, id in latest_version.items():
-                latest_version_number = version_number
-            print(latest_version_number)
-            with open(version_txt_file) as version_txt_file_open:
-                new_version = version_txt_file_open.read()
-                if latest_version_number in version_txt_file_open:
-                    print("It appears your yaml already contains this latest version info.")
-                else:
-                    outdated_version = version_info['version'][0]
-                    version_info['version_history'].insert(0,outdated_version)
-                    version_info['version'][0] = {f'{new_version}': {'file_id': f'{file_id_numbers}'}}
-                    with open(file_name, 'w+') as local_yaml:
-                        yaml.safe_dump(version_info, local_yaml)
+        try:
+            with open(file_name) as local_yaml:
+
+                version_info = yaml.safe_load(local_yaml)
+                print(version_info)
+                latest_version = version_info['version'][0]
+                for version_number, id in latest_version.items():
+                    latest_version_number = version_number
+                print(latest_version_number)
+                with open(version_txt_file) as version_txt_file_open:
+                    new_version = version_txt_file_open.read()
+                    if latest_version_number in version_txt_file_open:
+                        print("It appears your yaml already contains this latest version info.")
+                    else:
+                        outdated_version = version_info['version'][0]
+                        version_info['version_history'].insert(0,outdated_version)
+                        version_info['version'][0] = {f'{new_version}': {'file_id': f'{file_id_numbers}'}}
+                        with open(file_name, 'w+') as local_yaml:
+                            yaml.safe_dump(version_info, local_yaml)
+        except FileNotFoundError:
+    #create yaml file placeholder to be updated if you do not have one
+            print("You do not have a versions.yaml file . . . let me make one for you.")
+            yaml_version_format = {'version': [{'version.placeholder': {'file_id.placeholder': 'id.placeholder'}}],
+                                   'version_history': [{'v.placeholder': {'file_id.placeholder': 'id.placeholder'}}]}
+            yaml_string_format = str(yaml.dump(yaml_version_format))
+
+            save_path = str(os.path.join(os.getcwd(), 'version_history'))
+            completeName = os.path.join(save_path, 'versions.yaml')
+            with open(completeName, "w") as f:
+               f.write(yaml_string_format)
         os.remove('./VERSION_temporary.txt')
                     #print(id)
 #TODO make update yamal function automatically push to github
