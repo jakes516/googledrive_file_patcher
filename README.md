@@ -10,12 +10,12 @@ All code is contained within the [*patcher*](patcher) directory, and as of now t
 
 
 I suggest creating a virtual environment by using your command line/shell to `cd` into the *googledrive_game_patcher* directory, and running the command `python -m venv venv`. 
-I have included a [Requirements](requirements.txt) file to easily install all dependencies. Navigate to the *Scripts* directory of the above/your venv, cut the included [Requirements](requirements.txt) file
+I have included a [*requirements.txt*](requirements.txt) file to easily install all dependencies. Navigate to the *Scripts* directory of the above/your venv, cut the included [*requirements*](requirements.txt) file
 from the *googledrive_game_patcher* directory, and paste it in the *Scripts* directory. Then run the command `pip install -r requirements.txt` in your command line/shell.
 Your environment setup should be ready to go.
 
 
-Be sure to store your desired upload file in the *File_of_interest* directory, 
+Be sure to store your desired upload file in the [*File_of_interest*](patcher/File_of_interest) directory, 
 and change the raw github yaml url ("ver_URL") to your repository's at the top of [*updater*.**download_the_latest_version**](patcher/updater.py).
 
 And in [*GDrive*.**delete_files_from_drive**](patcher/GDrive.py).(It is the 7th method of DriveUtil). 
@@ -23,8 +23,8 @@ And in [*GDrive*.**delete_files_from_drive**](patcher/GDrive.py).(It is the 7th 
 Also be sure to create auth Credentials detailed below in the Uploader Setup section.
 
 ## Functionality
-[*Main.py*](patcher/main.py) now compresses the file you have in [*File_of_interest*](patcher/File_of_interest) with a prompt for version number, uploads the zipfile with a *VERSION.txt* to drive,
-opens this file for public access/sharing, updates the local *version_history.yaml* file and pushes this update to github.
+[*Main.py*](patcher/main.py) now compresses the file you have in [*File_of_interest*](patcher/File_of_interest) with a prompt for version number, uploads the zipfile with a [*VERSION.txt*](patcher/Game_Files/VERSION.txt) to drive,
+opens this file for public access/sharing, updates the local [*versions.yaml*](patcher/version_history/versions.yaml) file and pushes this update to github.
 
 A separate [*download_file.py*](patcher/download_file.py) now downloads the latest version listed on your github's [*versions.yaml*](patcher/version_history/versions.yaml) from drive.
 
@@ -66,8 +66,8 @@ Be sure to add the *Credentials* directory to your .gitignore (save patcher/Cred
 
 
 ## Downloader Setup
-In order for the downloader to run appropriately you need a *VERSION.txt* file with the current file version number listed in it present in your *Game_Files* directory.
-If you do not have a *VERSION.txt* it will automatically clear your *Game_files* directory and download the latest game files from Google Drive.
+In order for the downloader to run appropriately you need a [*VERSION.txt*](patcher/Game_Files/VERSION.txt) file with the current file version number listed in it present in your [*Game_files*](patcher/Game_Files) directory.
+If you do not have a [*VERSION.txt*](patcher/Game_Files/VERSION.txt) it will automatically clear your [*Game_files*](patcher/Game_Files) directory and download the latest game files from Google Drive.
 
 ## Future Updates
 Will update this readme if there are any future developments.
