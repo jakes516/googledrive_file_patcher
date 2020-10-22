@@ -3,6 +3,12 @@
 ## Description
 This repository is a patcher for uploading, downloading, and unzipping google drive files, opening the drive files to public access, 
 and keeping file versions updated. The code uses Python 3.7 (Pycharm IDE) with re, requests, os, yaml, pathlib, json, zipfile, and OAuth2Service modules installed.
+(All dependencies listed in requirements.txt)
+
+I suggest creating a virtual environment by using your command line/shell to cd into the googledrive_game_patcher directory, and running the command "python -m venv venv". 
+I have included a requirements.txt file to easily install all dependencies. Navigate to the Scripts directory of the above/your venv, cut the included requirements.txt file
+from the googledrive_game_patcher directory, and paste it in the Scripts directory. Then run the command "pip install -r requirements.txt" in your command line/shell.
+Your environment setup should be ready to go.
 
 As of now the patcher is completely functional, be sure you create Credentials detailed below in Uploader Setup, store your desired upload file in the File_of_interest directory, 
 and the github yaml url is changed to yours in updater and GDrive's delete_files_from_drive.
@@ -13,6 +19,7 @@ opens this file for public access/sharing, updates the local version_history.yam
 A separate download_latest_file.py now downloads the latest version listed on your github's version_history.yaml from drive.
 
 The uploader.sh and downloader.sh files have now been added and are functional; they run the shell_file.py's which contain modified paths for main.py and download_latest_file.py.
+The command line window is left open to read, press enter to close it after they have run.
 
 ## Structure
 - Google Drive + Drive API v3
@@ -35,8 +42,12 @@ Follow the links below to generate your account credentials.
 - Create Authorization Credentials [OAuth2 Authenication](https://developers.google.com/adwords/api/docs/guides/authentication)
 - [Google Developers Console](https://console.developers.google.com/)
 
-Once you have generated the Client Secret, Client ID, and refresh token credentials you should save them in a "Credentials" subdirectory as a .json file in the patcher directory. 
-Be sure to add the credentials.json file to your .gitignore as this info grants access to your account.
+IMPORTANT
+Be sure to rename the provided Credentials_placeholder directory to "Credentials" and the rename the existing client_credentials_placeholder.json file to "client_credentials.json".
+The patcher functions depend on these specific credential file names for relative paths.
+
+Once you have generated the Client Secret, Client ID, and refresh token credentials open the client_credentials.json file and enter/paste them into the labeled placeholder spots. 
+Be sure to add the Credentials directory to your .gitignore (save patcher/Credentials/ in .gitignore) as this info grants access to your account.
 
 
 
