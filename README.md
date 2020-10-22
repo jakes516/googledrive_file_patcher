@@ -1,4 +1,4 @@
-# Google Drive Game Patcher
+# Google Drive File Patcher
 
 ## Description
 This repository is a patcher for uploading, downloading, and unzipping google drive files, opening the drive files to public access, 
@@ -9,7 +9,7 @@ and keeping file versions updated. The code uses Python 3.7 (Pycharm IDE) with r
 All code is contained within the [*patcher*](patcher) directory, and as of now the patcher is completely functional.
 
 
-I suggest creating a virtual environment by using your command line/shell to `cd` into the *googledrive_game_patcher* directory, and running the command `python -m venv venv`. 
+I suggest creating a virtual environment by using your command line/shell to `cd` into the *googledrive_file_patcher* directory, and running the command `python -m venv venv`. 
 I have included a [*requirements.txt*](requirements.txt) file to easily install all dependencies. Navigate to the *Scripts* directory of the above/your venv, cut the included [*requirements.txt*](requirements.txt) file, 
 and paste it in the *Scripts* directory. Then run the command `pip install -r requirements.txt` in your command line/shell.
 Your environment setup should be ready to go.
