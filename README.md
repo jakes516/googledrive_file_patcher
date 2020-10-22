@@ -6,7 +6,7 @@ and keeping file versions updated. The code uses Python 3.7 (Pycharm IDE) with r
 (All dependencies listed in requirements.txt)
 
 ## Getting Started
-All code is contained within the *patcher* directory, and as of now the patcher is completely functional.
+All code is contained within the [*patcher*](patcher) directory, and as of now the patcher is completely functional.
 - [Patcher directory](patcher)
 
 
