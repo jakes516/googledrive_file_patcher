@@ -50,7 +50,6 @@ You will also need to authorize credentials for a web application in the Google 
 Follow the links below to generate your account credentials.
 
 - Skip down to section named **OAuth2 Playground** [Create OAuth2 Credentials](https://developers.google.com/adwords/api/docs/guides/authentication)
-- [Google Developers Console](https://console.developers.google.com/)
 
 ##### **IMPORTANT**
 Be sure to rename the provided [*Credentials_placeholder*](patcher/Credentials_placeholder) directory to "Credentials" and the rename the existing [*client_credentials_placeholder.json*](patcher/Credentials_placeholder/client_credentials_placeholder.json) file to "client_credentials.json".
