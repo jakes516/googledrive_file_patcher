@@ -5,6 +5,7 @@ This repository is a patcher for uploading, downloading, and unzipping google dr
 and keeping file versions updated. The code uses Python 3.7 (Pycharm IDE) with re, requests, os, yaml, pathlib, json, zipfile, and OAuth2Service modules installed.
 (All dependencies listed in requirements.txt)
 
+## Getting Started
 I suggest creating a virtual environment by using your command line/shell to cd into the googledrive_game_patcher directory, and running the command "python -m venv venv". 
 I have included a requirements.txt file to easily install all dependencies. Navigate to the Scripts directory of the above/your venv, cut the included requirements.txt file
 from the googledrive_game_patcher directory, and paste it in the Scripts directory. Then run the command "pip install -r requirements.txt" in your command line/shell.
