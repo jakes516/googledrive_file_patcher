@@ -24,7 +24,7 @@ class ExampleOAuth2Client:
 
     def get_access_token(self):
         #loading json file with client_id, client_secret, refresh_token
-        cred = open('./Credentials/client_credentials.json')
+        cred = open(str(os.path.join(os.getcwd(), 'Credentials\client_credentials.json')))
         credentials = json.load(cred)
         cred.close()
         data = {
@@ -40,7 +40,7 @@ class ExampleOAuth2Client:
 
 
 
-cred = open('./Credentials/client_credentials.json')
+cred = open(str(os.path.join(os.getcwd(), 'Credentials\client_credentials.json')))
 credentials = json.load(cred)
 cred.close()
 
