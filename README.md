@@ -16,7 +16,7 @@ or create one if it does not exist.
 
 I suggest creating a virtual environment by using your command line/shell to `cd` into the *googledrive_file_patcher* directory, and running the command `python -m venv venv`. 
 I have included a [*requirements.txt*](requirements.txt) file to easily install all dependencies. Navigate to the *Scripts* directory of the above/your venv, cut the included [*requirements.txt*](requirements.txt) file, 
-and paste it in the *Scripts* directory. Then run the command `pip install -r requirements.txt` in your command line/shell.
+and paste it in the *Scripts* directory. Then run the command `pip install -r requirements.txt` in your command line/shell with the `cwd` as *Scripts*.
 Your environment setup should be ready to go.
 
 
