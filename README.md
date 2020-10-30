@@ -2,7 +2,7 @@
 
 ## Description
 This repository is a patcher for uploading, downloading, and unzipping google drive files, opening the drive files to public access, 
-and keeping file versions updated. The code uses Python 3.7 (Pycharm IDE) with re, requests, os, yaml, pathlib, json, zipfile, and OAuth2Service modules installed.
+and keeping file versions updated. The *.sh* files included are intended to be added as clickable menu items in the Unity game editor. The code uses Python 3.7 (Pycharm IDE) with re, requests, os, yaml, pathlib, json, zipfile, and OAuth2Service modules installed.
 (All dependencies listed in requirements.txt) You will also need Git and pip installed.
 
 ## Getting Started
